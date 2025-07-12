@@ -23,5 +23,14 @@ class Utils {
                     .into(imageView)
             }
         }
+
+        fun loadCircularImage(context: Context, imageView: ImageView, url: String?, defaultResId: Int?) {
+            Glide.with(context)
+                .load(url)
+                .placeholder(R.drawable.signal)
+                .error(R.drawable.signal)
+                .circleCrop()
+                .into(imageView)
+        }
     }
 }

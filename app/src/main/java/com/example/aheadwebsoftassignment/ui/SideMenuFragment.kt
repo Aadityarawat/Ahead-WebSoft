@@ -43,7 +43,7 @@ class SideMenuFragment : Fragment() {
             helpList.clear()
             appList.clear()
 
-            Utils.loadImage(requireContext(), binding.profileIV, it.result.user_photo, R.drawable.ic_launcher_foreground)
+            Utils.loadCircularImage(requireContext(), binding.profileIV, it.result.user_photo, R.drawable.ic_launcher_foreground)
             binding.profileTV.text = it.result.title
 
             val menusList = it.result.menus
