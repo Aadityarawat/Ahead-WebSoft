@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.mainContent.setOnClickListener {
             if (isDrawerOpen) {
+                binding.menuButton.setImageResource(R.drawable.menu)
                 closeDrawer()
             }
         }
