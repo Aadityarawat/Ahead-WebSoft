@@ -41,7 +41,7 @@ class ItemAdapter(private val list: List<Menu>): RecyclerView.Adapter<ItemAdapte
         holder.binding.apply {
             if (position % 2 == 0){
                 val params = labelCL.layoutParams as ViewGroup.MarginLayoutParams
-                params.marginEnd = 10  // value in pixels
+                params.marginEnd = 10
                 labelCL.layoutParams = params
             }else{
                 val params = labelCL.layoutParams as ViewGroup.MarginLayoutParams
@@ -51,7 +51,7 @@ class ItemAdapter(private val list: List<Menu>): RecyclerView.Adapter<ItemAdapte
 
             if (position > 1){
                 val params = labelCL.layoutParams as ViewGroup.MarginLayoutParams
-                params.topMargin = 10  // value in pixels
+                params.topMargin = 10
                 labelCL.layoutParams = params
             }
 
