@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:background="@color/liteGrey"
+    tools:context=".ui.SideMenuFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:id="@+id/menuTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_10ssp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/iconbg"
+            app:layout_constraintLeft_toRightOf="@+id/menuTV"
+            app:layout_constraintTop_toTopOf="@+id/menuTV"
+            app:layout_constraintBottom_toBottomOf="@+id/menuTV"
+            app:layout_constraintEnd_toStartOf="@+id/searchFL">
+
+            <ImageView
+                android:id="@+id/globeIV"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/web"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/locationTV"/>
+
+            <TextView
+                android:id="@+id/locationTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="IND-INR-EN"
+                android:textColor="@color/black"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/downArrowIV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/downArrowIV"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/downarrow"
+                app:layout_constraintTop_toTopOf="@+id/locationTV"
+                app:layout_constraintBottom_toBottomOf="@+id/locationTV"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/searchFL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/iconbg"
+            android:padding="10dp"
+            app:layout_constraintTop_toTopOf="@+id/menuTV"
+            app:layout_constraintBottom_toBottomOf="@+id/menuTV"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"/>
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileNameCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/whitebg"
+            app:layout_constraintTop_toBottomOf="@+id/menuTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/profileIV"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/profileTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Louise Gonzales"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="@+id/profileIV"
+                app:layout_constraintBottom_toBottomOf="@+id/profileIV"
+                app:layout_constraintStart_toEndOf="@+id/profileIV"
+                app:layout_constraintEnd_toStartOf="@+id/profileEditTV"/>
+
+            <TextView
+                android:id="@+id/profileEditTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                android:textColor="@color/blue"
+                app:layout_constraintTop_toTopOf="@+id/profileTV"
+                app:layout_constraintBottom_toBottomOf="@id/profileTV"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/featureRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/profileNameCL" />
+
+        <TextView
+            android:id="@+id/appTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apps"
+            android:padding="10dp"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/textGrey"
+            app:layout_constraintTop_toBottomOf="@+id/featureRV"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appRV"
+            android:nestedScrollingEnabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/appTV" />
+
+        <FrameLayout
+            android:id="@+id/seeMoreFL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@drawable/greybg"
+            app:layout_constraintTop_toBottomOf="@+id/appRV">
+            <TextView
+                android:id="@+id/seeMoreTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_11ssp"
+                android:text="See More"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/helpTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Help More"
+            android:padding="10dp"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/textGrey"
+            app:layout_constraintTop_toBottomOf="@+id/seeMoreFL"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/helpRV"
+            android:nestedScrollingEnabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/helpTV" />
+
+        <LinearLayout
+            android:id="@+id/rateLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:background="@drawable/whitebg"
+            app:layout_constraintTop_toBottomOf="@+id/helpRV">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/ic_launcher"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_11ssp"
+                android:text="Rate Us"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/pinkbg"
+            app:layout_constraintTop_toBottomOf="@+id/rateLL">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_11ssp"
+                android:text="Sign Out"
+                android:textColor="@color/pink"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
