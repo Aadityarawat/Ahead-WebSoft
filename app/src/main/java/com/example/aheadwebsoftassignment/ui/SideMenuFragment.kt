@@ -22,6 +22,7 @@ class SideMenuFragment : Fragment() {
     private val appList = ArrayList<Menu>()
     private val helpList = ArrayList<Menu>()
     private lateinit var viewModel : ViewModel
+    private lateinit var featureAdapter : ItemAdapter
     private lateinit var helpAdapter : ItemAdapter
     private lateinit var appAdapter : ItemAdapter
     var flag = false
@@ -42,20 +43,27 @@ class SideMenuFragment : Fragment() {
         viewModel.itemLiveData.observe(viewLifecycleOwner) {
             helpList.clear()
             appList.clear()
+            featureList.clear()
 
             Utils.loadCircularImage(requireContext(), binding.profileIV, it.result.user_photo, R.drawable.signal)
             binding.profileTV.text = it.result.title
 
             val menusList = it.result.menus
             menusList.forEach{ menu ->
-                if (menu.label == "Settings" || menu.label == "Privacy"
-                    || menu.label == "Terms of Service" || menu.label == "Contact Us"){
-                    helpList.add(menu)
-                }else if(menu.label == "Rate Us"){
-                    Utils.loadImage(requireContext(), binding.rateIV, menu.icon, R.drawable.signal)
+                when (menu.label) {
+                    "Messages", "Notifications" -> {
+                        featureList.add(menu)
+                    }
+                    "Settings", "Privacy", "Terms of Service", "Contact Us" -> {
+                        helpList.add(menu)
+                    }
+                    "Rate Us" -> {
+                        Utils.loadImage(requireContext(), binding.rateIV, menu.icon, R.drawable.signal)
 
-                }else{
-                    appList.add(menu)
+                    }
+                    else -> {
+                        appList.add(menu)
+                    }
                 }
 
                 if(menu.label == "FAVOURITES"){
@@ -64,16 +72,18 @@ class SideMenuFragment : Fragment() {
             }
             appAdapter.notifyDataSetChanged()
             helpAdapter.notifyDataSetChanged()
+            featureAdapter.notifyDataSetChanged()
         }
     }
 
     private fun setUp(){
-        featureList.add(Menu(label = "Message", defaultImage = R.drawable.comments))
-        featureList.add(Menu(label = "Notifications", defaultImage = R.drawable.notification))
+        /*featureList.add(Menu(label = "Message", defaultImage = R.drawable.comments))
+        featureList.add(Menu(label = "Notifications", defaultImage = R.drawable.notification))*/
 
         val featureRV = binding.featureRV
         featureRV.layoutManager = GridLayoutManager(requireContext(), 2)
-        featureRV.adapter = ItemAdapter(featureList)
+        featureAdapter = ItemAdapter(featureList)
+        featureRV.adapter = featureAdapter
 
         val appRV = binding.appRV
         appRV.layoutManager = GridLayoutManager(requireContext(), 2)
