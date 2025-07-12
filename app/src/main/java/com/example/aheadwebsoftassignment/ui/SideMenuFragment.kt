@@ -43,7 +43,7 @@ class SideMenuFragment : Fragment() {
             helpList.clear()
             appList.clear()
 
-            Utils.loadCircularImage(requireContext(), binding.profileIV, it.result.user_photo, R.drawable.ic_launcher_foreground)
+            Utils.loadCircularImage(requireContext(), binding.profileIV, it.result.user_photo, R.drawable.signal)
             binding.profileTV.text = it.result.title
 
             val menusList = it.result.menus
@@ -51,6 +51,9 @@ class SideMenuFragment : Fragment() {
                 if (menu.label == "Settings" || menu.label == "Privacy"
                     || menu.label == "Terms of Service" || menu.label == "Contact Us"){
                     helpList.add(menu)
+                }else if(menu.label == "Rate Us"){
+                    Utils.loadImage(requireContext(), binding.rateIV, menu.icon, R.drawable.signal)
+
                 }else{
                     appList.add(menu)
                 }
