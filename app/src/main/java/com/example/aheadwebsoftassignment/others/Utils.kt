@@ -12,6 +12,8 @@ class Utils {
                 val defaultImage = defaultResId ?: R.drawable.signal
                 Glide.with(context)
                     .load(defaultImage)
+                    .placeholder(R.drawable.signal)
+                    .error(R.drawable.signal)
                     .into(imageView)
             } else {
                 Glide.with(context)

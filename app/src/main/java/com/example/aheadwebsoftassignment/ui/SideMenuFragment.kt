@@ -54,6 +54,10 @@ class SideMenuFragment : Fragment() {
                 }else{
                     appList.add(menu)
                 }
+
+                if(menu.label == "FAVOURITES"){
+                    Log.d("FAVOURITES","${menu.icon}")
+                }
             }
             appAdapter.notifyDataSetChanged()
             helpAdapter.notifyDataSetChanged()
